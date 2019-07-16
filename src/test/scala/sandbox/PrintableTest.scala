@@ -33,4 +33,13 @@ class PrintableTest extends WordSpec with Matchers {
       Printable.format(Cat("Meow", 2, "white")) shouldEqual "Meow is a 2 year-old white cat."
     }
   }
+
+  "Printable via extension" should {
+    import PrintableSyntax._
+    import PrintableInstances._
+
+    "give a string representation" in {
+      4.format shouldEqual "4"
+    }
+  }
 }
