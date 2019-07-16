@@ -13,6 +13,9 @@ scalacOptions ++= Seq(
   "-Xfatal-warnings"      // turn compiler warnings into errors
 )
 
-libraryDependencies += "org.typelevel" %% "cats-core" % "2.0.0-M4"
+libraryDependencies ++= Seq(
+  "org.typelevel" %% "cats-core" % "2.0.0-M4",
+  "org.scalatest" %% "scalatest" % "3.0.8" % "test"
+)
 
 addCompilerPlugin("org.typelevel" %% "kind-projector" % "0.10.3")
