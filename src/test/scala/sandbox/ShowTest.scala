@@ -1,13 +1,11 @@
 package sandbox
 
-import org.scalatest.{Matchers, WordSpec}
+import sandbox.helper.{Cat, Specification}
 
-class CatTest extends WordSpec with Matchers {
+class ShowTest extends Specification {
 
   "Printable for Cat" should {
     import PrintableInstances._
-
-    final case class Cat(name: String, age: Int, color: String)
 
     implicit val catPrintable: Printable[Cat] = new Printable[Cat] {
       override def format(value: Cat): String = {
@@ -29,8 +27,6 @@ class CatTest extends WordSpec with Matchers {
     import cats.instances.int._
     import cats.instances.string._
     import cats.syntax.show._
-
-    final case class Cat(name: String, age: Int, color: String)
 
     implicit val dateShow: Show[Cat] =
       Show.show(cat => s"${cat.name.show} is a ${cat.age.show} year-old ${cat.color.show} cat.")

@@ -1,8 +1,8 @@
 package sandbox
 
-import org.scalatest.{Matchers, WordSpec}
+import sandbox.helper.Specification
 
-class PrintableTest extends WordSpec with Matchers {
+class PrintableTest extends Specification {
 
   "Printable" should {
     import PrintableInstances._
