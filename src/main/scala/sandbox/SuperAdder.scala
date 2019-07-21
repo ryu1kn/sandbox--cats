@@ -1,9 +1,8 @@
 package sandbox
 
 import cats.Monoid
-import cats.instances.int._
-import cats.syntax.monoid._
+import cats.syntax.semigroup._
 
 object SuperAdder {
-  def add(items: List[Int]): Int = items.foldRight(Monoid[Int].empty)(_ |+| _)
+  def add[A: Monoid](items: List[A]): A = items.foldRight(Monoid[A].empty)(_ |+| _)
 }
