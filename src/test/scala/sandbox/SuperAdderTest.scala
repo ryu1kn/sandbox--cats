@@ -23,4 +23,23 @@ class SuperAdderTest extends Specification {
       SuperAdder.add(List(Some(4), None)) shouldEqual Some(4)
     }
   }
+
+  "SuperAdder for custom type" should {
+    import cats.Monoid
+    import cats.instances.double._
+    import cats.syntax.semigroup._
+
+    case class Order(totalCost: Double, quantity: Double)
+
+    implicit val orderMonoid = new Monoid[Order] {
+      override def empty: Order = Order(0, 0)
+
+      override def combine(x: Order, y: Order): Order =
+        Order(x.totalCost |+| y.totalCost, x.quantity |+| y.quantity)
+    }
+
+    "add custom type" in {
+      SuperAdder.add(List(Order(100, 1), Order(50, 3))) shouldEqual Order(150, 4)
+    }
+  }
 }
