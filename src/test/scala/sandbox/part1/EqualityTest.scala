@@ -1,13 +1,13 @@
-package sandbox
+package sandbox.part1
 
-import sandbox.helper.{Cat, Specification}
+import sandbox.part1.helper.{Cat, Specification}
 
 class EqualityTest extends Specification {
   "Eq" should {
     import cats.Eq
     import cats.instances.int._
-    import cats.instances.string._
     import cats.instances.option._
+    import cats.instances.string._
     import cats.syntax.eq._
 
     // Eq's === collide with Scalatest's ===; hence using `eqv` instead

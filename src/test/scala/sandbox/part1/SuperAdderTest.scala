@@ -1,6 +1,6 @@
-package sandbox
+package sandbox.part1
 
-import sandbox.helper.Specification
+import sandbox.part1.helper.Specification
 
 class SuperAdderTest extends Specification {
   import cats.instances.int._

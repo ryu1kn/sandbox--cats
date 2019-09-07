@@ -1,6 +1,6 @@
-package sandbox
+package sandbox.part1
 
-import sandbox.helper.Specification
+import sandbox.part1.helper.Specification
 
 class MonadTest extends Specification {
   trait MyMonad[F[_]] {

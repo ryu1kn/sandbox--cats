@@ -1,6 +1,6 @@
-package sandbox
+package sandbox.part1
 
-import sandbox.helper.Specification
+import sandbox.part1.helper.Specification
 
 class SemigroupalTest extends Specification {
 
@@ -15,9 +15,9 @@ class SemigroupalTest extends Specification {
 
   "Validated" should {
     import cats.data.Validated
-    import cats.syntax.either._
     import cats.instances.list._
     import cats.syntax.apply._
+    import cats.syntax.either._
 
     case class User(name: String, age: Int)
 

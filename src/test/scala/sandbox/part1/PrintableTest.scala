@@ -1,9 +1,8 @@
-package sandbox
+package sandbox.part1
 
-import sandbox.helper.Specification
+import sandbox.part1.helper.Specification
 
 class PrintableTest extends Specification {
-
   "Printable" should {
     import PrintableInstances._
 

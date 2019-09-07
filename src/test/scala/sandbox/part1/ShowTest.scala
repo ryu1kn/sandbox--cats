@@ -1,6 +1,6 @@
-package sandbox
+package sandbox.part1
 
-import sandbox.helper.{Cat, Specification}
+import sandbox.part1.helper.{Cat, Specification}
 
 class ShowTest extends Specification {
 

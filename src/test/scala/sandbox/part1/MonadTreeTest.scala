@@ -1,13 +1,12 @@
-package sandbox
+package sandbox.part1
 
-import sandbox.helper.Specification
-
-sealed trait Tree[+A]
-
-final case class Branch[A](left: Tree[A], right: Tree[A]) extends Tree[A]
-final case class Leaf[A](value: A) extends Tree[A]
+import sandbox.part1.helper.Specification
 
 class MonadTreeTest extends Specification {
+  sealed trait Tree[+A]
+
+  case class Branch[A](left: Tree[A], right: Tree[A]) extends Tree[A]
+  case class Leaf[A](value: A) extends Tree[A]
 
   def branch[A](left: Tree[A], right: Tree[A]): Tree[A] = Branch(left, right)
   def leaf[A](value: A): Tree[A] = Leaf(value)
