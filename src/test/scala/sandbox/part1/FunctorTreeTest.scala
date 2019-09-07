@@ -1,7 +1,7 @@
 package sandbox.part1
 
 import cats.Functor
-import sandbox.part1.helper.Specification
+import sandbox.helper.Specification
 
 class FunctorTreeTest extends Specification {
   sealed trait Tree[+A]

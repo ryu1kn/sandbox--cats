@@ -1,6 +1,7 @@
 package sandbox.part1
 
-import sandbox.part1.helper.{Cat, Specification}
+import sandbox.helper.Specification
+import sandbox.part1.helper.Cat
 
 class EqualityTest extends Specification {
   "Eq" should {

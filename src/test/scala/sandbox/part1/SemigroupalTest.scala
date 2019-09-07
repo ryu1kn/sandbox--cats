@@ -1,6 +1,6 @@
 package sandbox.part1
 
-import sandbox.part1.helper.Specification
+import sandbox.helper.Specification
 
 class SemigroupalTest extends Specification {
 

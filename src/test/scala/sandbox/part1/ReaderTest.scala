@@ -1,7 +1,7 @@
 package sandbox.part1
 
 import cats.data.Reader
-import sandbox.part1.helper.Specification
+import sandbox.helper.Specification
 
 class ReaderTest extends Specification {
 

@@ -1,4 +1,4 @@
-package sandbox.part1.helper
+package sandbox.helper
 
 import org.scalatest.{Matchers, WordSpec}
 

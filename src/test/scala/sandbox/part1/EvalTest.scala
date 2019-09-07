@@ -1,7 +1,7 @@
 package sandbox.part1
 
 import cats.Eval
-import sandbox.part1.helper.Specification
+import sandbox.helper.Specification
 
 class EvalTest extends Specification {
 
