@@ -10,7 +10,7 @@ import cats.syntax.functor._
 import cats.syntax.flatMap._
 import cats.syntax.applicativeError._
 
-object Main extends IOApp {
+object CopyFile extends IOApp {
   println("Hello " |+| "Cats!")
 
   def inputStream[F[_]: Sync](f: File, guard: Semaphore[F]): Resource[F, FileInputStream] =
