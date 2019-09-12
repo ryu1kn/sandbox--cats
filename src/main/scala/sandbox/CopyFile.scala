@@ -1,14 +1,19 @@
 package sandbox
 
-import java.io.{File, FileInputStream, FileOutputStream, InputStream, OutputStream}
+import java.io._
+import java.nio.file.{Files, Paths}
 
+import cats.Foldable
 import cats.effect.concurrent.Semaphore
 import cats.effect.{Concurrent, ExitCode, IO, IOApp, Resource, Sync}
+import cats.instances.list._
 import cats.instances.string._
-import cats.syntax.semigroup._
-import cats.syntax.functor._
-import cats.syntax.flatMap._
 import cats.syntax.applicativeError._
+import cats.syntax.flatMap._
+import cats.syntax.functor._
+import cats.syntax.semigroup._
+
+import scala.io.StdIn
 
 object CopyFile extends IOApp {
   println("Hello " |+| "Cats!")
@@ -58,9 +63,16 @@ object CopyFile extends IOApp {
       }
     } yield count
 
+  def fileExists: String => IO[Boolean] = file => IO(Files.exists(Paths.get(file)))
+
+  def keepFile: String => IO[Boolean] = file => IO(StdIn.readLine(s"""Overwrite "$file"? (y/n): """)).map(_ != "y")
+
   override def run(args: List[String]): IO[ExitCode] =
     for {
       _ <- if (args.length < 2) IO.raiseError(new IllegalArgumentException("Need origin and destination files"))
+           else IO.unit
+      shouldExit <- Foldable[List].forallM(List(fileExists, keepFile))(_(args(1)))
+      _ <- if (shouldExit) IO.raiseError(new RuntimeException("Not overwriting a destination file, aborting..."))
            else IO.unit
       orig = new File(args(0))
       dest = new File(args(1))
